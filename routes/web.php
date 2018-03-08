@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin/home','AdminController@index')->name('admin.home');;
+Route::get('admin','Admin\LoginController@showLoginForm')->name('admin.login');
+Route::post('admin','Admin\LoginController@login');
+Route::post('admin-password/email','Admin\ForgotPasswordController@showLinkRequestEmail')->name('admin.password.emaiil');
+Route::get('admin-password/reset','Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+Route::post('admin-password/reset','Admin\ResetPasswordController@reset');
+Route::get('admin-password/reset/{token}','Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
